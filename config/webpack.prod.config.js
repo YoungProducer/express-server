@@ -5,7 +5,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
   entry: {
-    main: '../src/index.js'
+    main: '../lib/index.js'
   },
   output: {
     path: path.join(__dirname, '../dist'),

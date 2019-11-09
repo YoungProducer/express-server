@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', './src/index.js']
+    main: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', 'babel-polyfill', './lib/index.js']
   },
   output: {
     path: path.join(__dirname, '../dist'),
@@ -26,6 +26,12 @@ module.exports = {
           failOnError: false,
           failOnWarning: false
         }
+      },
+      {
+        enforce: "pre",
+        test: /\.js?$/,
+        loader: 'prettier-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.js$/,
