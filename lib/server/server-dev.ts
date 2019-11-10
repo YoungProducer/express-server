@@ -1,12 +1,12 @@
-import 'babel-polyfill';
-import path from 'path'
-import express from 'express'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import config from '../../config/webpack.dev.config'
+// import 'babel-polyfill';
+import path from 'path';
+import express from 'express';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
-import mainRouter from '../src/routes'; 
+import mainRouter from '../src/routes/index';
+import config from '../../config/webpack.dev.config';
 
 const app = express();
 const DIST_DIR = path.join(__dirname, '../dist');
@@ -14,7 +14,7 @@ const HTML_FILE = path.join(DIST_DIR, '/index.html');
 const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
+    publicPath: '/',
 }));
 
 app.use(webpackHotMiddleware(compiler));
@@ -23,7 +23,7 @@ app.use(webpackHotMiddleware(compiler));
 //     res.send({a: 'hello'});
 //     res.end();
 //   })
-  
+
 // app.get('*', (req, res, next) => {
 //   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
 //     if (err) {
@@ -36,7 +36,7 @@ app.use(webpackHotMiddleware(compiler));
 // });
 
 app.use('/', mainRouter);
-  
+
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {

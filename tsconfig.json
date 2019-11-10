@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outFile": "./dist/app.js",
+        "sourceMap": true,
+        "allowJs": true,
+        "target": "es5"
+    },
+    "include": [
+        "lib/**/*.ts", "lib/server/server-dev.js"
+    ],
+    "exclude": [
+        "/node_modules",
+    ]
+}

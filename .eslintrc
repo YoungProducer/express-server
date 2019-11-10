@@ -1,11 +1,28 @@
 {
-    "plugins": [ "react" ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
-    ],
-    "parser": "babel-eslint",
-    "rules": {
-      "no-undef": 0
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "import/extensions": [".js", ".json", ".jsx", ".ts", ".tsx"],
+    "no-undef": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": {
+      "extensions": [
+        ".jsx",
+        ".tsx"
+      ]
     }
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": [
+          "./config/webpack.dev.config.js"
+        ]
+      }
+    }
+  }
 }

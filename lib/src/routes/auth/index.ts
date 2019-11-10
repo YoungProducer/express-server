@@ -1,21 +1,28 @@
 import express from 'express';
-import restfull from '../../utils/restfull';
+// import restfull from '../../utils/restfull';
 
 const uuid = require('uuid/v4');
 const router = express.Router();
 
-router.get(
-    '/signin',
+router.post(
+    '/auth/signup',
     async (req, res, next) => {
-        // const { username, password } = req.body;
+        const { username, password } = req.body;
         const hash = uuid();
         res.status(200);
         res.send({
-            hash
+            hash,
         });
         res.end();
-    }
-)
+    },
+);
+
+router.post(
+    '/auth/signin',
+    async (req, res, next) => {
+
+    },
+);
 
 // router.all(
 //     '/signin',
